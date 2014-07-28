@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Psquared_PriceRounding>
+            <active>true</active>
+            <codePool>community</codePool>
+            <version>2.0.0</version>
+        </Psquared_PriceRounding>
+    </modules>
+</config>

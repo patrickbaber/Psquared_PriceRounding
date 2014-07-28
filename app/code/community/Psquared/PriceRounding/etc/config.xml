@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Psquared_PriceRounding>
+            <version>2.0.0</version>
+        </Psquared_PriceRounding>
+    </modules>
+    <global>
+        <helpers>
+            <pricerounding>
+                <class>Psquared_PriceRounding_Helper</class>
+            </pricerounding>
+        </helpers>
+        <models>
+            <pricerounding>
+                <class>Psquared_PriceRounding_Model</class>
+            </pricerounding>
+            <directory>
+                <rewrite>
+                    <currency>Psquared_PriceRounding_Model_Directory_Currency</currency>
+                </rewrite>
+            </directory>
+        </models>
+        <blocks>
+            <pricerounding>
+                <class>Psquared_PriceRounding_Block</class>
+            </pricerounding>
+            <!-- Choose one of the following sections -->
+            <!-- 1st: Default - begin -->
+            <catalog>
+                <rewrite>
+                    <product_price>Psquared_PriceRounding_Block_Product_Price</product_price>
+                </rewrite>
+            </catalog>
+            <!-- 1st: Default - end -->
+            <!-- 2nd: If the extension German Setup is installed - begin -->
+            <!-- <germansetup>
+                <rewrite>
+                    <catalog_product_price>Psquared_PriceRounding_Block_Product_Price</catalog_product_price>
+                </rewrite>
+            </germansetup> -->
+            <!-- 2nd: If the extension German Setup is installed - end -->
+        </blocks>
+    </global>
+    <default>
+        <catalog>
+            <price_rounding>
+                <enable_price_rounding>0</enable_price_rounding>
+                <rounding_method>2</rounding_method>
+                <rounding_machanism>1</rounding_machanism>
+            </price_rounding>
+        </catalog>
+    </default>
+    <frontend>
+        <events>
+            <catalog_product_collection_load_after>
+                <observers>
+                    <pricerounding>
+                        <type>singleton</type>
+                        <class>pricerounding/observer</class>
+                        <method>catchCatalogProductCollectionLoadAfter</method>
+                    </pricerounding>
+                </observers>
+            </catalog_product_collection_load_after>
+            <catalog_product_load_after>
+                <observers>
+                    <pricerounding>
+                        <type>singleton</type>
+                        <class>pricerounding/observer</class>
+                        <method>catchCatalogProductLoadAfter</method>
+                    </pricerounding>
+                </observers>
+            </catalog_product_load_after>
+            <controller_action_predispatch>
+                <observers>
+                    <pricerounding>
+                        <type>singleton</type>
+                        <class>pricerounding/observer</class>
+                        <method>catchControllerActionPredispatch</method>
+                    </pricerounding>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <pricerounding>
+                    <files>
+                        <default>Psquared_PriceRounding.csv</default>
+                    </files>
+                </pricerounding>
+            </modules>
+        </translate>
+    </adminhtml>
+</config>
